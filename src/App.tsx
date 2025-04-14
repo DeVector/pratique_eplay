@@ -1,10 +1,22 @@
-import { GlobaCss } from './styles'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import { Container, GlobaCss } from './styles'
+import Home from './pages/Home'
+
+const rotas = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  }
+])
 
 function App() {
   return (
     <>
       <GlobaCss />
-      <div>Olá Mundo</div>
+      <Container>
+        <RouterProvider router={rotas} />
+      </Container>
     </>
   )
 }
