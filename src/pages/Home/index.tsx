@@ -1,8 +1,12 @@
+import Banner from '../../containers/Banner'
 import Menu from '../../containers/Menu'
 
 const Home = () => (
   <>
-    <Menu />
+    <div className="container">
+      <Menu />
+    </div>
+    <Banner />
   </>
 )
 
