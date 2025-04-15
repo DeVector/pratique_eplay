@@ -1,5 +1,6 @@
 import Banner from '../../containers/Banner'
 import Menu from '../../containers/Menu'
+import ProductsList from '../../containers/ProductsList'
 
 const Home = () => (
   <>
@@ -7,6 +8,7 @@ const Home = () => (
       <Menu />
     </div>
     <Banner />
+    <ProductsList title="Promoções" background="gray" />
   </>
 )
 
