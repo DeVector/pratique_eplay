@@ -5,6 +5,7 @@ import { GlobaCss } from './styles'
 import Menu from './containers/Menu'
 
 import Rotas from './routes'
+import Footer from './containers/Footer'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Menu />
       </div>
       <Rotas />
+      <Footer />
     </BrowserRouter>
   )
 }

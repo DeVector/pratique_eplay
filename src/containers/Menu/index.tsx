@@ -15,7 +15,9 @@ import LogoCarrinho from '../../images/carrinho.svg'
 const Menu = () => (
   <BarraMenu>
     <div>
-      <LogoImg src={LogoIcon} alt="Icone da Logo escrito EPLAY" />
+      <Link to="/">
+        <LogoImg src={LogoIcon} alt="Icone da Logo escrito EPLAY" />
+      </Link>
       <nav>
         <Links>
           <LinkItem>
