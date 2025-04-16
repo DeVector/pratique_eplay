@@ -33,3 +33,9 @@ export const Infos = styled.div`
   top: 16px;
   right: 16px;
 `
+
+export const Image = styled.img`
+  width: 225px;
+  height: 250px;
+  object-fit: cover;
+`

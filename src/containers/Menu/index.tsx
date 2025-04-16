@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import {
   BarraMenu,
   LinkItem,
@@ -17,7 +19,7 @@ const Menu = () => (
       <nav>
         <Links>
           <LinkItem>
-            <a href="#">Categorias</a>
+            <Link to="/categories">Categorias</Link>
           </LinkItem>
           <LinkItem>
             <a href="#">Novidades</a>

@@ -1,4 +1,3 @@
-import Banner from '../../containers/Banner'
 import ProductsList from '../../containers/ProductsList'
 
 import Game from '../../models/Game'
@@ -99,15 +98,16 @@ const emBreve: Game[] = [
   }
 ]
 
-const Home = () => (
+const Categories = () => (
   <>
-    <Banner />
-    <ProductsList games={promocoes} title="Promoções" background="gray" />
-    <ProductsList games={emBreve} title="Em breve" background="black" />
+    <ProductsList games={promocoes} title="RPG" background="gray" />
+    <ProductsList games={emBreve} title="Ação" background="black" />
+    <ProductsList games={promocoes} title="Aventura" background="gray" />
+    <ProductsList games={emBreve} title="FPS" background="black" />
   </>
 )
 
-export default Home
+export default Categories
 
 /**
  * Estados Unidos, 1990 dois namorados apaixonados por aventura e perigo começaram a fazer um caos na cidade de Vice City onde chegaram da America Latina para conquistar a tão sonhada vida americana, porém eles foram para o caminho diferente, começaram a querer ir em busca de cometer delitos para conseguir comprar carros e casas de luxo por todo o estado.
