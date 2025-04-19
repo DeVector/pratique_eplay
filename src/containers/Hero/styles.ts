@@ -40,13 +40,6 @@ export const Banner = styled.div`
   }
 `
 
-/*export const Infos = styled.div`
-  position: absolute;
-  top: 32px;
-
-
-`*/
-
 export const BackInfo = styled.div`
   padding: 16px;
   max-width: 290px;

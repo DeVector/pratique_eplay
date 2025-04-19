@@ -5,30 +5,9 @@ import Section from '../Section'
 
 import { Action, Item, Items, Modal, ModalContent } from './styles'
 
-import gtaVI from '../../images/banner-homem-aranha.png'
-import redII from '../../images/RED_2.png'
 import zoom from '../../images/zoom.svg'
 import play from '../../images/play.svg'
 import btnClose from '../../images/btn_close.png'
-
-const mock: GalleryItem[] = [
-  {
-    type: 'image',
-    url: gtaVI
-  },
-  {
-    type: 'image',
-    url: redII
-  },
-  {
-    type: 'video',
-    url: 'https://www.youtube.com/embed/QdBZY2fkU-0?si=SwfoFLJ_RFujpZj2'
-  },
-  {
-    type: 'video',
-    url: 'https://www.youtube.com/embed/dFotVyjZoAM?si=hEF0b3wlZWXiTjIL'
-  }
-]
 
 type Props = {
   defaultCover: string
