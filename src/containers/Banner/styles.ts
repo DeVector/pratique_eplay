@@ -46,6 +46,7 @@ export const PriceGame = styled.p`
   margin-top: 24px;
 
   span {
+    display: block;
     text-decoration: line-through;
   }
 `

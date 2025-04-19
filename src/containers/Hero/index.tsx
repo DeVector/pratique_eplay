@@ -1,37 +1,27 @@
+import { Game } from '../../pages/Home'
 import Button from '../Button'
+import { formatarPreco } from '../ProductsList'
 import Tag from '../Tag'
 
 import * as S from './styles'
 
 type Props = {
-  category: string
-  system: string
-  title: string
-  image: string
-  priceNormal: number
-  priceDesc: number
+  game: Game
 }
 
-const Hero = ({
-  category,
-  system,
-  title,
-  image,
-  priceNormal,
-  priceDesc
-}: Props) => {
+const Hero = ({ game }: Props) => {
   return (
-    <S.Banner style={{ backgroundImage: `url(${image})` }}>
+    <S.Banner style={{ backgroundImage: `url(${game.media.cover})` }}>
       <div className="container">
         <div>
-          <Tag>{category}</Tag>
-          <Tag>{system}</Tag>
+          <Tag>{game.details.category}</Tag>
+          <Tag>{game.details.system}</Tag>
         </div>
         <S.BackInfo>
-          <h2> {title} </h2>
+          <h2> {game.name} </h2>
           <p>
-            <span>De R$ {priceNormal}</span>
-            Por R$ {priceDesc}
+            <span>De R$ {formatarPreco(game.prices.old)}</span>
+            Por R$ {formatarPreco(game.prices.current)}
           </p>
           <Button type="button" variant="primary" title="Adicionar ao carrinho">
             Adicionar ao carrinho

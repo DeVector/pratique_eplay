@@ -20,6 +20,8 @@ const Banner = () => {
     return <h3>Carregando...</h3>
   }
 
+  console.log('Discount:', game.prices.discount, typeof game.prices.discount)
+
   return (
     <S.Banner style={{ backgroundImage: `url(${game.media.cover})` }}>
       <div className="container">
@@ -27,13 +29,23 @@ const Banner = () => {
         <div>
           <S.NameGame>{game.name}</S.NameGame>
           <S.PriceGame>
-            De <span>R$ {formatarPreco(game.prices.old)}</span> <br /> por
-            apenas R$ {formatarPreco(game.prices.current)}
+            {game.prices.discount && (
+              <span>De R$ {formatarPreco(game.prices.old)}</span>
+            )}
+            {game.prices.current && (
+              <>Por R$ {formatarPreco(game.prices.current)}</>
+            )}
           </S.PriceGame>
         </div>
-        <Button type="link" to="/produto" title="Clique aqui e aproveite agora">
-          Aproveitar
-        </Button>
+        {game.prices.current && (
+          <Button
+            type="link"
+            to={`/product/${game.id}`}
+            title="Clique aqui e aproveite agora"
+          >
+            Aproveitar
+          </Button>
+        )}
       </div>
     </S.Banner>
   )
