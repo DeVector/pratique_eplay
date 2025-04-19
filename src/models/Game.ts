@@ -5,6 +5,8 @@ class Game {
   description: string
   infos: string[]
   image: string
+  /*priceNormal: number
+  pricePromo?: number*/
   id: number
 
   constructor(
@@ -15,6 +17,8 @@ class Game {
     description: string,
     infos: string[],
     image: string
+    /*priceNormal: number,
+    pricePromo: number*/
   ) {
     this.id = id
     this.title = title
@@ -23,6 +27,8 @@ class Game {
     this.image = image
     this.infos = infos
     this.system = system
+    /*this.priceNormal = priceNormal
+    this.pricePromo = pricePromo*/
   }
 }
 
