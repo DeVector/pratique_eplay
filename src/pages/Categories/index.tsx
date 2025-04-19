@@ -1,111 +1,50 @@
+import { useEffect, useState } from 'react'
 import ProductsList from '../../containers/ProductsList'
+import { Game } from '../Home'
 
-import Game from '../../models/Game'
+const Categories = () => {
+  const [gameRpg, setGameRpg] = useState<Game[]>([])
+  const [gameAcao, setGameAcao] = useState<Game[]>([])
+  const [gameLuta, setGameLuta] = useState<Game[]>([])
+  const [gameSimulacao, setGameSimulacao] = useState<Game[]>([])
+  const [gameEsporte, setGameEsporte] = useState<Game[]>([])
 
-import REDII from '../../images/RED_2.png'
-import gta from '../../images/gta_v.png'
-import midnight from '../../images/midnight_club.png'
-import gtasan from '../../images/gta_san.png'
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/rpg')
+      .then((res) => res.json())
+      .then((res) => setGameRpg(res))
 
-import gtavi from '../../images/gta_vi.png'
-import diablo from '../../images/diablo.png'
-import star from '../../images/star_wars.png'
-import zelda from '../../images/zelda.png'
+    fetch('https://fake-api-tau.vercel.app/api/eplay/acao')
+      .then((res) => res.json())
+      .then((res) => setGameAcao(res))
 
-const promocoes: Game[] = [
-  {
-    id: 1,
-    title: 'Red Dead Redption II',
-    category: 'Ação',
-    system: 'Windows | PS5 | Xbox',
-    description:
-      'Estados Unidos, 1899. O fim da era do velho oeste começou. Depois de tudo dar...',
-    infos: ['-10%', 'R$ 199'],
-    image: REDII
-  },
-  {
-    id: 2,
-    title: 'Grand Theft Auto V',
-    category: 'Ação',
-    system: 'Windows | PS5 | Xbox',
-    description:
-      'Quando um tratante inexperiente, um ladrão de bancos aposentado e um psicopata aterrorizante...',
-    infos: ['-10%', 'R$ 99'],
-    image: gta
-  },
-  {
-    id: 3,
-    title: 'MidNight Club 3',
-    category: 'Corrida',
-    system: 'Windows',
-    description:
-      'A série que levou as corridas em pistas fechadas para as ruas da cidade está de volta...',
-    infos: ['-10%', 'R$ 49'],
-    image: midnight
-  },
-  {
-    id: 4,
-    title: 'Grand Theft Auto San Andreas',
-    category: 'Ação',
-    system: 'Windows',
-    description:
-      'Há 5 anos, Carl Johnson fugiu das pressões da vida em Los Santos, San Andreas...',
-    infos: ['-10%', 'R$ 79'],
-    image: gtasan
-  }
-]
+    fetch('https://fake-api-tau.vercel.app/api/eplay/luta')
+      .then((res) => res.json())
+      .then((res) => setGameLuta(res))
 
-const emBreve: Game[] = [
-  {
-    id: 5,
-    title: 'Grand Theft Auto VI',
-    category: 'Ação',
-    system: 'PS5',
-    description:
-      'Estados Unidos, 1990 dois namorados apaixonados por aventura e perigo começaram...',
-    infos: ['03/10'],
-    image: gtavi
-  },
-  {
-    id: 6,
-    title: 'Diablo',
-    category: 'RPG',
-    system: 'Windows',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    infos: ['05/05'],
-    image: diablo
-  },
-  {
-    id: 7,
-    title: 'Star Wars',
-    category: 'Aventura',
-    system: 'Windows',
-    description:
-      'Star Wars Jedi: Survivor é um próximo jogo de ação e aventura desenvolvido pela Respawn...',
-    infos: ['10/06'],
-    image: star
-  },
-  {
-    id: 8,
-    title: 'The Legend of Zelda - TOK',
-    category: 'RPG',
-    system: 'Nitendo',
-    description:
-      'Uma aventura épica pela terra e pelos céus de Hyrule aguarda em The Legend of Zelda™...',
-    infos: ['25/05'],
-    image: zelda
-  }
-]
+    fetch('https://fake-api-tau.vercel.app/api/eplay/simulacao')
+      .then((res) => res.json())
+      .then((res) => setGameSimulacao(res))
 
-const Categories = () => (
-  <>
-    <ProductsList games={promocoes} title="RPG" background="gray" />
-    <ProductsList games={emBreve} title="Ação" background="black" />
-    <ProductsList games={promocoes} title="Aventura" background="gray" />
-    <ProductsList games={emBreve} title="FPS" background="black" />
-  </>
-)
+    fetch('https://fake-api-tau.vercel.app/api/eplay/esportes')
+      .then((res) => res.json())
+      .then((res) => setGameEsporte(res))
+  }, [])
+
+  return (
+    <>
+      <ProductsList games={gameAcao} title="Ação" background="black" />
+      <ProductsList games={gameEsporte} title="Esportes" background="gray" />
+      <ProductsList games={gameLuta} title="Luta" background="black" />
+      <ProductsList games={gameRpg} title="RPG" background="gray" />
+      <ProductsList
+        games={gameSimulacao}
+        title="Simulação"
+        background="black"
+      />
+    </>
+  )
+}
 
 export default Categories
 

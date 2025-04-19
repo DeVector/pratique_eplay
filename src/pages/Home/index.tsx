@@ -1,111 +1,58 @@
+import { useEffect, useState } from 'react'
 import Banner from '../../containers/Banner'
 import ProductsList from '../../containers/ProductsList'
 
-import Game from '../../models/Game'
+export interface GalleryItem {
+  type: 'image' | 'video'
+  url: string
+}
 
-import REDII from '../../images/RED_2.png'
-import gta from '../../images/gta_v.png'
-import midnight from '../../images/midnight_club.png'
-import gtasan from '../../images/gta_san.png'
-
-import gtavi from '../../images/gta_vi.png'
-import diablo from '../../images/diablo.png'
-import star from '../../images/star_wars.png'
-import zelda from '../../images/zelda.png'
-
-const promocoes: Game[] = [
-  {
-    id: 1,
-    title: 'Red Dead Redption II',
-    category: 'Ação',
-    system: 'Windows | PS5 | Xbox',
-    description:
-      'Estados Unidos, 1899. O fim da era do velho oeste começou. Depois de tudo dar...',
-    infos: ['-10%', 'R$ 199'],
-    image: REDII
-  },
-  {
-    id: 2,
-    title: 'Grand Theft Auto V',
-    category: 'Ação',
-    system: 'Windows | PS5 | Xbox',
-    description:
-      'Quando um tratante inexperiente, um ladrão de bancos aposentado e um psicopata aterrorizante...',
-    infos: ['-10%', 'R$ 99'],
-    image: gta
-  },
-  {
-    id: 3,
-    title: 'MidNight Club 3',
-    category: 'Corrida',
-    system: 'Windows',
-    description:
-      'A série que levou as corridas em pistas fechadas para as ruas da cidade está de volta...',
-    infos: ['-10%', 'R$ 49'],
-    image: midnight
-  },
-  {
-    id: 4,
-    title: 'Grand Theft Auto San Andreas',
-    category: 'Ação',
-    system: 'Windows',
-    description:
-      'Há 5 anos, Carl Johnson fugiu das pressões da vida em Los Santos, San Andreas...',
-    infos: ['-10%', 'R$ 79'],
-    image: gtasan
+export type Game = {
+  id: number
+  name: string
+  description: string
+  release_date?: string
+  prices: {
+    discount?: number
+    old?: number
+    current?: number
   }
-]
-
-const emBreve: Game[] = [
-  {
-    id: 5,
-    title: 'Grand Theft Auto VI',
-    category: 'Ação',
-    system: 'PS5',
-    description:
-      'Estados Unidos, 1990 dois namorados apaixonados por aventura e perigo começaram...',
-    infos: ['03/10'],
-    image: gtavi
-  },
-  {
-    id: 6,
-    title: 'Diablo',
-    category: 'RPG',
-    system: 'Windows',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    infos: ['05/05'],
-    image: diablo
-  },
-  {
-    id: 7,
-    title: 'Star Wars',
-    category: 'Aventura',
-    system: 'Windows',
-    description:
-      'Star Wars Jedi: Survivor é um próximo jogo de ação e aventura desenvolvido pela Respawn...',
-    infos: ['10/06'],
-    image: star
-  },
-  {
-    id: 8,
-    title: 'The Legend of Zelda - TOK',
-    category: 'RPG',
-    system: 'Nitendo',
-    description:
-      'Uma aventura épica pela terra e pelos céus de Hyrule aguarda em The Legend of Zelda™...',
-    infos: ['25/05'],
-    image: zelda
+  details: {
+    category: string
+    system: string
+    developer: string
+    publisher: string
+    languages: string[]
   }
-]
+  media: {
+    thumbnail: string
+    cover: string
+    gallery: GalleryItem[]
+  }
+}
 
-const Home = () => (
-  <>
-    <Banner />
-    <ProductsList games={promocoes} title="Promoções" background="gray" />
-    <ProductsList games={emBreve} title="Em breve" background="black" />
-  </>
-)
+const Home = () => {
+  const [promocoes, setPromocoes] = useState<Game[]>([])
+  const [emBreve, setEmBreve] = useState<Game[]>([])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
+      .then((res) => res.json())
+      .then((res) => setPromocoes(res))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
+      .then((res) => res.json())
+      .then((res) => setEmBreve(res))
+  }, [])
+
+  return (
+    <>
+      <Banner />
+      <ProductsList games={promocoes} title="Promoções" background="gray" />
+      <ProductsList games={emBreve} title="Em breve" background="black" />
+    </>
+  )
+}
 
 export default Home
 

@@ -10,14 +10,14 @@ export const Container = styled.section<Omit<Props, 'title' | 'games'>>`
 
   ${Card} {
     background-color: ${(props) =>
-      props.background === 'black' ? cores.cinza : cores.preta};
+      props.background === 'gray' ? cores.preta : cores.cinza};
   }
 `
 
 export const List = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 24px;
+  gap: 24px;
   margin-top: 40px;
 `
 

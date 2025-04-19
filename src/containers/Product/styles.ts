@@ -35,7 +35,8 @@ export const Infos = styled.div`
 `
 
 export const Image = styled.img`
-  width: 225px;
+  display: block;
+  width: 100%;
   height: 250px;
   object-fit: cover;
 `
