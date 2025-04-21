@@ -9,6 +9,7 @@ import Menu from './containers/Menu'
 
 import Rotas from './routes'
 import Footer from './containers/Footer'
+import Cart from './containers/Cart'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         </div>
         <Rotas />
         <Footer />
+        <Cart />
       </BrowserRouter>
     </Provider>
   )
