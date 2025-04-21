@@ -1,6 +1,9 @@
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
 import { GlobaCss } from './styles'
+
+import store from './store'
 
 import Menu from './containers/Menu'
 
@@ -9,14 +12,16 @@ import Footer from './containers/Footer'
 
 function App() {
   return (
-    <BrowserRouter>
-      <GlobaCss />
-      <div className="container">
-        <Menu />
-      </div>
-      <Rotas />
-      <Footer />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <GlobaCss />
+        <div className="container">
+          <Menu />
+        </div>
+        <Rotas />
+        <Footer />
+      </BrowserRouter>
+    </Provider>
   )
 }
 
